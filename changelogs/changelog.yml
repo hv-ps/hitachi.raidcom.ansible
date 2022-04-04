@@ -1,0 +1,10 @@
+ancestor: null
+releases:
+  0.5.0:
+    changes:
+      release_summary: Prerelease to verify publication process
+    release_date: '2022-04-04'
+    modules:
+    - description: create, expand and delete volume (LDEV)
+      name: volume
+      namespace: 'hitachi.raidcom'

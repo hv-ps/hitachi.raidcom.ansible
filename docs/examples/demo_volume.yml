@@ -1,0 +1,43 @@
+# 
+# Copyright (c) 2021 Hitachi Vantara, Inc. All rights reserved.
+# Author: Giacomo Chiapparini <@gchiapparini-hv>
+# 
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+#
+# v1.0
+#
+- name: demo_volume
+  gather_facts: no
+  become: yes
+  hosts: all
+  collections:
+    - hitachi.raidcom
+
+  tasks:
+  - name: get volume information
+    volume:
+      #connectivity
+      horcm_inst: "1"
+      storage_serial: "495101"
+      #properties
+      state: query
+      volume_id: "100"
+
+  - name: create or expand volume
+    volume:
+      #connectivity
+      horcm_inst: "1"
+      storage_serial: "495101"
+      #properties
+      state: present
+      volume_id: "100"
+      volume_size: 250 GB
+
+  - name: delete volume
+    volume:
+      #connectivity
+      horcm_inst: "1"
+      storage_serial: "495101"
+      #properties
+      state: absent
+      volume_id: "100"
