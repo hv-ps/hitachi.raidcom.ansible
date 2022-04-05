@@ -17,7 +17,7 @@ For storages that do not embed CCI on controller or if replication management is
 - CCI configured (HORCM files, horcmstart and login)
 
 ## Installation
-ansible-galaxy install Hitachi.Raidcom  
+ansible-galaxy install hitachi.raidcom  
 or  
 ansible-galaxy collection install git+https://github.com/hv-ps/Hitachi.Raidcom.Ansible.git,beta
 
