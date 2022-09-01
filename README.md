@@ -1,3 +1,3 @@
 # hitachi.raidcom.ansible 
-- V1.0.0 (host, volume, lun) ETA End June 2022 (we are switching the backend)
+- V1.0.0 (host, volume, lun) ETA End 2022 (switching the backend needs more time, craeted dedicated "hiraid" library)
 - for BETA please see the beta BRANCH
