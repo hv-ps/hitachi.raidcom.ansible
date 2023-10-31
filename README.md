@@ -1,5 +1,5 @@
 ## NOTE: This is the lastest version of the collection and
-##       there is currently no progress.
+##       there is currently no development progress.
 ##       The only module available is for HUR.
 
 ## Ansible Collection - Hitachi.Raidcom
