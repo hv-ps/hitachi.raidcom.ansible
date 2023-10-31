@@ -1,0 +1,48 @@
+
+Normal Pair-Pair/ISL oben, splitten, testen im SEC, resync
+
+SPLIT
+
+HORCMINST=1 pairsplit -g HUR -rw -IH1
+HORCMINST=1 pairdisplay -g HUR -fcxe -l -CLI -IH1
+HORCMINST=1 raidvchkdsp -g HUR -v gflag -IH1
+HORCMINST=2 pairdisplay -g HUR -fcxe -l -CLI -IH2
+HORCMINST=2 raidvchkdsp -g HUR -v gflag -IH2
+
+PAIRRESYNC
+HORCMINST=1 pairresync -g HUR -c 15 -IH1
+HORCMINST=1 pairdisplay -g HUR -fcxe -l -CLI -IH1
+HORCMINST=1 raidvchkdsp -g HUR -v gflag -IH1
+HORCMINST=2 pairdisplay -g HUR -fcxe -l -CLI -IH2
+HORCMINST=2 raidvchkds p -g HUR -v gflag -IH2
+
+
+HORCTAKEOVER (mit ISL oben, z.B wenn SRV def, und wieder zurück)
+HORCMINST=400 pairdisplay -g HUR -fcxe -l -CLI -IH2
+
+HORCMINST=400 /usr/local/bin/sudo /usr/bin/horctakeover -g HUR -t 300 -IH2
+HORCMINST=400 pairdisplay -g HUR -fcxe -l -CLI -IH2
+HORCMINST=400 raidvchkdsp -g HUR -v gflag -IH2
+
+HORCMINST=300 /usr/local/bin/sudo /usr/bin/horctakeover -g HUR -t 300 -IH1
+HORCMINST=400 pairdisplay -g HUR -fcxe -l -CLI -IH2
+HORCMINST=400 raidvchkdsp -g HUR -v gflag -IH2
+
+
+HORCTAKEOVER (mit ISL down, RZ Zürich Ausfall testen, und wieder aufräumen)
+Pair-Pair
+ISL down (simulieren mit pairsplit -g HUR -rw -IH1)
+HORCMINST=400 pairdisplay -g HUR -fcxe -l -CLI -IH2
+HORCMINST=400 /usr/local/bin/sudo /usr/bin/horctakeover -g HUR -t 60 -IH2
+HORCMINST=400 pairdisplay -g HUR -fcxe -l -CLI -IH2
+HORCMINST=400 raidvchkdsp -g HUR -v gflag -IH2
+
+HORCMINST=400 pairsplit -g HUR -RB -IH2
+HORCMINST=400 pairdisplay -g HUR -fcx -l -IH2
+ISL wiederherstellen
+HORCMINST=300 pairresync -g HUR -IH1
+HORCMINST=400 pairdisplay -g HUR -fcx -l -IH2
+warten dass er wieder sync ist
+
+
+

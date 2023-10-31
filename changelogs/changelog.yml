@@ -1,0 +1,18 @@
+ancestor: null
+releases:
+  0.6.1:
+    changes:
+      release_summary: latest status before closing HUR project, removed incomplete modules volume,lun,hostgroup
+    release_date: '2023-05-11'
+    modules:
+    - description: manage HUR (Hitachi Universal Replicator)
+      name: hur
+      namespace: 'hitachi.raidcom'
+  0.5.0:
+    changes:
+      release_summary: Prerelease to verify publication process
+    release_date: '2022-04-04'
+    modules:
+    - description: create, expand and delete volume (LDEV)
+      name: volume
+      namespace: 'hitachi.raidcom'

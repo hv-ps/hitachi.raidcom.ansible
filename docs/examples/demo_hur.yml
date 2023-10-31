@@ -1,0 +1,34 @@
+#
+# Copyright (c) 2021 Hitachi Vantara, Inc. All rights reserved.
+# Author: Giacomo Chiapparini <giacomo.chiapparini@hitachivantara.com>
+#
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+#
+# v1.0
+#
+- name: demo_volume
+  gather_facts: no
+  become: yes
+  hosts: hurStorageDevelopment   #E990_1, E990_2
+  collections:
+    - hitachi.raidcom
+
+  tasks:
+  - name: HUR status = query
+    hur:
+      #connectivity
+      p_horcm_inst: "{{ p_horcm_inst }}"
+      p_storage_serial: "{{ p_storage_serial }}"
+      s_horcm_inst: "{{ s_horcm_inst }}"
+      s_storage_serial: "{{ s_storage_serial }}"
+      #horcm_inst: "{{ p_storage.horcm_inst }}"
+      #storage_serial: "{{ p_storage.serial }}"
+      #properties
+      state: query
+      #state: present
+      #state: absent
+      #state: split pairsplit (PAIR, PAIR)
+      #state: swap takeover (PAIR, PAIR)
+
+      #group_name: "HUR"
+      copy_group: "HUR"

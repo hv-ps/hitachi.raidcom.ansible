@@ -1,0 +1,32 @@
+# 
+# Copyright (c) 2021 Hitachi Vantara, Inc. All rights reserved.
+# Author: Giacomo Chiapparini <giacomo.chiapparini@hitachivantara.com>
+# 
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+#
+# v1.0
+#
+- name: demo - hur_delete
+  gather_facts: no
+  become: yes
+  hosts: localhost
+  collections:
+    - hitachi.raidcom
+    #- p_storage
+    #    - horcm_inst: 1
+    #    - storage_serial: 641900
+    #- s_storage
+    #    - horcm_inst: 2
+    #    - storage_serial: 612239
+
+  tasks:
+
+  - name: hur delete
+    hur:
+      #connectivity
+      horcm_inst: 1
+      storage_serial: 641900
+      #properties
+      state: absent
+      copy_group: "HUR"
+    register: results

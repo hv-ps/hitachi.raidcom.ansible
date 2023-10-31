@@ -1,0 +1,26 @@
+# 
+# Copyright (c) 2021 Hitachi Vantara, Inc. All rights reserved.
+# Author: Giacomo Chiapparini <giacomo.chiapparini@hitachivantara.com>
+# 
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+#
+# v1.0
+#
+- name: demo_volume
+  gather_facts: no
+  become: yes
+  hosts: E990_1, E990_2
+  collections:
+    - hitachi.raidcom
+
+  tasks:
+  
+  - name: hur switch, horctakeover, real, isl up
+    hur:
+      #connectivity
+      p_horcm_inst: 400
+      s_horcm_inst: 300
+      #properties
+      state: present
+      group_name: "hekatez_hur"
+
